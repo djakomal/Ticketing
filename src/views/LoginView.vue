@@ -88,7 +88,7 @@ body{
 	max-width:525px;
 	min-height:670px;
 	position:relative;
-	background:url(https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80) no-repeat center;
+	background-color: #0c0404 ;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 .login-snip{
@@ -96,7 +96,7 @@ body{
 	height:100%;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(0, 77, 77,.9);
+	background:rgba(10, 10, 10, 0.9);
 }
 .login-snip .login,
 .login-snip .sign-up-form{
