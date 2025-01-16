@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from '@/views/LoginView.vue'
+
 
 const routes = [
-  {
-    path: '/',
-    name: 'LoginView',
-    component: LoginView
-  },
+  // {
+  //   path: '/',
+  //   name: 'LoginView',
+  //   component: LoginView
+  // },
 
   {
-    path: '/h',
+    path: '/',
     name: 'home',
     component: HomeView
   },
@@ -22,6 +22,25 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/DashbordView.vue')
   },
+
+  {
+    path: '/event',
+    name: 'EventView',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/EventView.vue')
+  },
+
+  
+  {
+    path: '/details',
+    name: 'DetailsView',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/DetailsView.vue')
+  },
   {
     path: '/Ticket',
     name: 'TicketView',
@@ -31,12 +50,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/TicketView.vue')
   },
   {
-    path: '/User',
-    name: 'UserView',
+    path: '/all',
+    name: 'AllTicketsView',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/AllTicketsView.vue')
   },
   {
     path: '/Paie',

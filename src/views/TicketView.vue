@@ -10,7 +10,7 @@
                     <!-- Head -->
                     <div class="ui-head">
                         <!-- Background Image -->
-                        <img src="https://www.bootdey.com/image/800x400/48D1CC/000000" alt=""
+                        <img src="../assets/cropped.jpg" alt=""
                             class="img-responsive bg-img">
                         <!-- Transparent Background -->
                         <div class="ui-trans clearfix">

@@ -2,7 +2,7 @@
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <main>
         <section class="container">
-            <h1>Events</h1>
+            <h1>Events Tickets</h1>
             <div class="row">
                 <article class="card fl-left" >
                     <section class="date">

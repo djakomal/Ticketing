@@ -98,10 +98,7 @@
                                             <strong>Price:</strong>: <span class="text-navy">$452.90</span>
 
                                             <p class="m-t">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
                                             </p>
                                             <a class="btn btn-success">
                                                 <i class="fa fa-cc-paypal">
