@@ -13,7 +13,7 @@
                             <a :href="`/all`" class="text-theme-color">{{ events.name }}</a></h5>
                         <ul class="event-time margin-10px-bottom md-margin-5px-bottom">
                             <li><i class="far fa-clock margin-10px-right"></i> {{events.date  }}</li>
-                            <li><i class="fas fa-user margin-5px-right"></i> Speaker : {{ events.Speaker }}</li>
+                            <li><i class="fas fa-user margin-5px-right"></i> Invited : {{ events.invited }}</li>
                         </ul>
                         <p>{{ events.description }}</p>
                         <a class="butn small margin-10px-top md-no-margin-top" :href="`/details/${events.id}`">Read Mors <i
@@ -58,7 +58,7 @@
                             <a :href="`/all`" class="text-theme-color">{{ events.name }}</a></h5>
                         <ul class="event-time margin-10px-bottom md-margin-5px-bottom">
                             <li><i class="far fa-clock margin-10px-right"></i>{{ events.date }}</li>
-                            <li><i class="fas fa-map-marker-alt margin-5px-right"></i> Invit :{{ events.Speaker }} </li>
+                            <li><i class="fas fa-map-marker-alt margin-5px-right"></i> Invited :{{ events.invited }} </li>
                         </ul>
                         <p>{{ events.description }}</p>
                         <a class="butn small margin-10px-top md-no-margin-top" :href="`/details/${events.id}`">Read Mors <i
@@ -164,11 +164,11 @@ body {
 </style>
 
 <script>
-import DetailsView from './DetailsView.vue';
+import axios from 'axios';
 export default {
     name:'EventView',
     components:{
-        DetailsView
+        
     },
 
   data() {
@@ -176,6 +176,32 @@ export default {
         eventdetails:[],
     };
   },
-  
+  methods:{
+
+    getMails() {
+        axios.get('http://localhost:8081/tickets/tickets')
+            // .then(res => res.json())
+            .then(res => {
+                this.eventdetails= res.data
+                console.log(this.eventdetails)
+            })
+    },
+    // getbyid(id){
+    //         axios.get(`http://localhost:8081/mail/CRUD/get/${id}`).
+    //         then(res=>res.json())
+    //         .then(data=>{
+    //             this.eventdetails=data
+    //             console.log(this.eventdetails)
+    //         })
+    //     }
+
+ 
+},
+beforeMount() {
+    this.getMails()
+}
+
+
 };
+  
 </script>

@@ -24,7 +24,7 @@ const routes = [
   },
 
   {
-    path: '/event',
+    path: '/event/:id',
     name: 'EventView',
     props: true,
     // route level code-splitting
@@ -50,14 +50,6 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/TicketView.vue')
-  },
-  {
-    path: '/',
-    name: 'AllTicketsView',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AllTicketsView.vue')
   },
   {
     path: '/Paie',

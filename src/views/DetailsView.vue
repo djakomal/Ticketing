@@ -3,7 +3,7 @@
     <main>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-        <div class="container" v-if="eventdetails">
+        <div class="container">
             <div class="row">
                 <div class="col-md-5">
                     <div class="project-info-box mt-0">
@@ -34,9 +34,7 @@
                 </div><!-- / column -->
             </div>
         </div>
-        <div class="message" v-else-if="!eventdetails" >
-            <p>changement</p>
-        </div>
+
     </main>
 </template>
 <style  lang="css">
@@ -522,84 +520,31 @@ strong {
 }
 </style>
 <script lang="js">
+import axios from 'axios';
 
 export default {
-    props: {
-    id: {
-      type: [String,Number]  ,
-      default: null,
-    },
+    name:'DetailsView',
+    components: {
+  
   },
  
  data() {
    return {
-    eventdetails:[
-        {
-         id: 1,
-          name: 'Business Conference',
-          description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur...',
-          review: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem...',
-          Artiste: 'CUPCAKE CO',
-          Categories: 'Festivale',
-          Date: '14.02.2020',
-          Invited: 'James Doe',
-          Budget: '$50',
-        },
-        {
-          id: 2,
-          name: 'Tech Summit 2023',
-          description: 'Explorez les nouvelles tendances technologiques...',
-          review: 'Un événement incontournable pour les passionnés de technologie.',
-          Artiste: 'Tech Stars',
-          Categories: 'Conférence',
-          Date: '21.05.2023',
-          Invited: 'Jane Smith',
-          Budget: '$100',
-        },
-        {
-          id: 3,
-          name: 'Music Fiesta',
-          description: 'Un festival de musique inoubliable avec des artistes internationaux...',
-          review: 'Des performances captivantes et une ambiance incroyable.',
-          Artiste: 'DJ Remix',
-          Categories: 'Musique',
-          Date: '10.12.2023',
-          Invited: 'Chris Brown',
-          Budget: '$75',
-        },
-    ]
+    eventdetails:[],
    };
  },
  methods:{
 
-    getMails() {
-            axios.get('http://localhost:8081/tickets/CRUD')
-                // .then(res => res.json())
-                .then(res => {
-                    this.tickets= res.data
-                    console.log(this.mail)
-                })
-        },
-        delete(id) {
-            axios.delete(`http://localhost:8081/tickts/CRUD/delete/${id}`)
-
-                .then(res => {
-                    this.tickets = this.tickets.filter(m => m.id !== id);
-                    console.log('Suppression réussie :', res);
-
-
-
-                })
-
-        },
-        getbyid(id){
-            axios.get(`http://localhost:8081/tickets/CRUD/get/${this.$route.params.id}`).
+    getbyid(id){
+            axios.get(`http://localhost:8081/tickets/tickets/get/${id}`).
             then(res=>res.json())
             .then(data=>{
-                this.tickets=data
-                console.log(this.mal)
+                this.eventdetails=data
+                console.log(this.eventdetails)
             })
         }
+
+      
 
     },
     beforeMount() {
