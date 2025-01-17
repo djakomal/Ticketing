@@ -41,18 +41,18 @@
                                   <thead>
                                       <tr>
                                           <th class="text-center" scope="col">Date</th>
-                                          <th scope="col">Artiste</th>
+                                          <th scope="col">Affiche</th>
                                           <th scope="col">Evenement</th>
                                           <th scope="col">Lieu</th>
                                           <th class="text-center" scope="col">Plus</th>
                                       </tr>
                                   </thead>
-                                  <tbody>
-                                      <tr class="inner-box">
+                                  <tbody v-for="events in eventdetails" v-bind:key="events.id">
+                                      <tr class="inner-box" >
                                           <th scope="row">
                                               <div class="event-date">
-                                                  <span>16</span>
-                                                  <p>Novembar</p>
+                                                  <span>{{ events.jour }}</span>
+                                                  <p>{{ events.mois  }}</p>
                                               </div>
                                           </th>
                                           <td>
@@ -63,111 +63,32 @@
                                           </td>
                                           <td>
                                               <div class="event-wrap">
-                                                  <h3><a href="#">Harman Kardon</a></h3>
+                                                  <h3><a href="#">{{ events.name }}</a></h3>
                                                   <div class="meta">
                                                       <div class="organizers">
-                                                          <a href="#">Aslan Lingker</a>
+                                                          <a href="#">{{ events.invited }}</a>
                                                       </div>
                                                       <div class="categories">
                                                           <a href="#">Inspire</a>
                                                       </div>
                                                       <div class="time">
-                                                          <span>05:35 AM - 08:00 AM 2h 25'</span>
+                                                          <span>{{ events.Date }}</span>
                                                       </div>
                                                   </div>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="r-no">
-                                                  <span>Room B3</span>
+                                                  <span>{{ events.lieu }}</span>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="black-btn">
-                                                  <a class="btn btn-black" :href="`/User`" >Read More</a>
+                                                  <a class="btn btn-black" :href="`/details/${events.id}`" >Read More</a>
                                               </div>
                                           </td>
                                       </tr>
-                                      <tr class="inner-box">
-                                          <th scope="row">
-                                              <div class="event-date">
-                                                  <span>20</span>
-                                                  <p>Novembar</p>
-                                              </div>
-                                          </th>
-                                          <td>
-                                              <div class="event-img">
-                                                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                                      alt="" />
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="event-wrap">
-                                                  <h3><a href="#">Toni Duggan</a></h3>
-                                                  <div class="meta">
-                                                      <div class="organizers">
-                                                          <a href="#">Aslan Lingker</a>
-                                                      </div>
-                                                      <div class="categories">
-                                                          <a href="#">Inspire</a>
-                                                      </div>
-                                                      <div class="time">
-                                                          <span>05:35 AM - 08:00 AM 2h 25'</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="r-no">
-                                                  <span>Room D3</span>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="black-btn">
-                                                  <a class="btn btn-black" :href="`/User`" >Read More</a>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                      <tr class="inner-box border-bottom-0">
-                                          <th scope="row">
-                                              <div class="event-date">
-                                                  <span>18</span>
-                                                  <p>Novembar</p>
-                                              </div>
-                                          </th>
-                                          <td>
-                                              <div class="event-img">
-                                                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                                                      alt="" />
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="event-wrap">
-                                                  <h3><a href="#">Billal Hossain</a></h3>
-                                                  <div class="meta">
-                                                      <div class="organizers">
-                                                          <a href="#">Aslan Lingker</a>
-                                                      </div>
-                                                      <div class="categories">
-                                                          <a href="#">Inspire</a>
-                                                      </div>
-                                                      <div class="time">
-                                                          <span>05:35 AM - 08:00 AM 2h 25'</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="r-no">
-                                                  <span>Room A3</span>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="black-btn">
-                                                  <a class="btn btn-black" :href="`/User`" >Read More</a>
-                                              </div>
-                                          </td>
-                                      </tr>
+
                                   </tbody>
                               </table>
                           </div>
@@ -453,3 +374,38 @@ height: 100px;
 border-radius: 8px;
 }
 </style>
+
+<script lang="js">
+
+import axios from 'axios';
+export default {
+    name:'EventView',
+    components:{
+        
+    },
+
+  data() {
+    return {
+        eventdetails:[],
+    };
+  },
+  methods:{
+
+getMails() {
+        axios.get('http://localhost:8081/tickets/tickets')
+            // .then(res => res.json())
+            .then(res => {
+                this.eventdetails= res.data
+                console.log(this.eventdetails)
+            })
+    }
+ 
+},
+beforeMount() {
+    this.getMails()
+}
+
+
+};
+
+</script>
