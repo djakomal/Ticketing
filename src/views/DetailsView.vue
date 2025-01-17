@@ -1,26 +1,21 @@
 <template>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <main>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-        <div class="container">
+        <div class="container" v-if="eventdetails">
             <div class="row">
                 <div class="col-md-5">
                     <div class="project-info-box mt-0">
                         <h5>PROJECT DETAILS</h5>
-                        <p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat,
-                            hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui
-                            et blandit laoreet, quam nisi tincidunt tortor.</p>
+                        <p class="mb-0">{{ eventdetails.description }}</p>
                     </div><!-- / project-info-box -->
-
                     <div class="project-info-box">
-                        <p><b>Artiste:</b> CUPCAKE CO</p>
-                        <p><b>Date:</b> 14.02.2020</p>
-                        <p><b>Invited:</b> James Doe</p>
-                        <p class="mb-0"><b>Budget:</b> $50</p>
+                        <p><b>Artiste:</b> {{ eventdetails.Artiste }}</p>
+                        <p><b>Date:</b> {{ eventdetails.Date }}</p>
+                        <p><b>Invited:</b>{{ eventdetails.Invited }} </p>
+                        <p class="mb-0"><b>Budget:</b>{{ eventdetails.Budget }}</p>
                     </div><!-- / project-info-box -->
-
                     <div class="project-info-box mt-0 mb-0">
                         <p class="mb-0">
                             <span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
@@ -31,8 +26,7 @@
                 <div class="col-md-7">
                     <img src="https://www.bootdey.com/image/400x300/FFB6C1/000000" alt="project-image" class="rounded">
                     <div class="project-info-box">
-                        <p><b>Categories:</b> Design, Illustration</p>
-                        <p><b>Skills:</b> Illustrator</p>
+                        <p><b>Categories:</b>{{ eventdetails.Categories }}</p>
                         <a :href="`/ticket`" class="ui-btn bg-red"><i class="fa fa-ticket"></i> Have the  Tickets</a>
                         <br>
                         <a :href="`/`" class="ui-btn bg-green"><i class="fa fa-dot-circle-o"></i> Back</a>
@@ -40,9 +34,12 @@
                 </div><!-- / column -->
             </div>
         </div>
+        <div class="message" v-else-if="!eventdetails" >
+            <p>changement</p>
+        </div>
     </main>
 </template>
-<style lang="css">
+<style  lang="css">
 body {
     background: #f5f5f5;
     margin-top: 20px;
@@ -524,3 +521,93 @@ strong {
     font-weight: 700 !important;
 }
 </style>
+<script lang="js">
+
+export default {
+    props: {
+    id: {
+      type: [String,Number]  ,
+      default: null,
+    },
+  },
+ 
+ data() {
+   return {
+    eventdetails:[
+        {
+         id: 1,
+          name: 'Business Conference',
+          description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur...',
+          review: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem...',
+          Artiste: 'CUPCAKE CO',
+          Categories: 'Festivale',
+          Date: '14.02.2020',
+          Invited: 'James Doe',
+          Budget: '$50',
+        },
+        {
+          id: 2,
+          name: 'Tech Summit 2023',
+          description: 'Explorez les nouvelles tendances technologiques...',
+          review: 'Un événement incontournable pour les passionnés de technologie.',
+          Artiste: 'Tech Stars',
+          Categories: 'Conférence',
+          Date: '21.05.2023',
+          Invited: 'Jane Smith',
+          Budget: '$100',
+        },
+        {
+          id: 3,
+          name: 'Music Fiesta',
+          description: 'Un festival de musique inoubliable avec des artistes internationaux...',
+          review: 'Des performances captivantes et une ambiance incroyable.',
+          Artiste: 'DJ Remix',
+          Categories: 'Musique',
+          Date: '10.12.2023',
+          Invited: 'Chris Brown',
+          Budget: '$75',
+        },
+    ]
+   };
+ },
+ methods:{
+
+    getMails() {
+            axios.get('http://localhost:8081/tickets/CRUD')
+                // .then(res => res.json())
+                .then(res => {
+                    this.tickets= res.data
+                    console.log(this.mail)
+                })
+        },
+        delete(id) {
+            axios.delete(`http://localhost:8081/tickts/CRUD/delete/${id}`)
+
+                .then(res => {
+                    this.tickets = this.tickets.filter(m => m.id !== id);
+                    console.log('Suppression réussie :', res);
+
+
+
+                })
+
+        },
+        getbyid(id){
+            axios.get(`http://localhost:8081/tickets/CRUD/get/${this.$route.params.id}`).
+            then(res=>res.json())
+            .then(data=>{
+                this.tickets=data
+                console.log(this.mal)
+            })
+        }
+
+    },
+    beforeMount() {
+        this.getMails()
+    }
+
+ 
+};
+</script>
+
+
