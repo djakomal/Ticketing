@@ -11,10 +11,10 @@
                         <p class="mb-0">{{ eventdetails.description }}</p>
                     </div><!-- / project-info-box -->
                     <div class="project-info-box">
-                        <p><b>Artiste:</b> {{ eventdetails.Artiste }}</p>
-                        <p><b>Date:</b> {{ eventdetails.Date }}</p>
-                        <p><b>Invited:</b>{{ eventdetails.Invited }} </p>
-                        <p class="mb-0"><b>Budget:</b>{{ eventdetails.Budget }}</p>
+                        <p><b>Artiste:</b> {{ eventdetails.artiste }}</p>
+                        <p><b>Date:</b> {{ eventdetails.date }}</p>
+                        <p><b>Invited:</b>{{ eventdetails.invited }} </p>
+                        <p class="mb-0"><b>Budget:</b>{{ eventdetails.budget }}</p>
                     </div><!-- / project-info-box -->
                     <div class="project-info-box mt-0 mb-0">
                         <p class="mb-0">
@@ -26,7 +26,7 @@
                 <div class="col-md-7">
                     <img src="https://www.bootdey.com/image/400x300/FFB6C1/000000" alt="project-image" class="rounded">
                     <div class="project-info-box">
-                        <p><b>Categories:</b>{{ eventdetails.Categories }}</p>
+                        <p><b>Categories:</b>{{ eventdetails.categories }}</p>
                         <a :href="`/ticket`" class="ui-btn bg-red"><i class="fa fa-ticket"></i> Have the  Tickets</a>
                         <br>
                         <a :href="`/`" class="ui-btn bg-green"><i class="fa fa-dot-circle-o"></i> Back</a>
@@ -524,9 +524,7 @@ import axios from 'axios';
 
 export default {
     name:'DetailsView',
-    components: {
-  
-  },
+ 
  
  data() {
    return {
@@ -536,19 +534,25 @@ export default {
  methods:{
 
     getbyid(){
-            axios.get(`http://localhost:8081/mail/CRUD/get/${this.$route.params.id}`).
-            then(res=>res.json())
-            .then(data=>{
-                this.eventdetails=data
+            axios.get(`http://localhost:8081/tickets/tickets/get/${this.$route.params.id}`).
+            then(res=> {
+                this.eventdetails=res.data
                 console.log(this.eventdetails)
             })
-        }
-
-      
+        },
+        getMails() {
+        axios.get('http://localhost:8081/tickets/tickets')
+            // .then(res => res.json())
+            .then(res => {
+                this.eventdetails= res.data
+                console.log(this.eventdetails)
+            })
+    } 
 
     },
     beforeMount() {
-        this.getMails()
+     
+        this.getbyid()
     }
 
  
