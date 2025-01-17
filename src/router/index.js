@@ -24,7 +24,7 @@ const routes = [
   },
 
   {
-    path: '/event/:id',
+    path: '/event',
     name: 'EventView',
     props: true,
     // route level code-splitting

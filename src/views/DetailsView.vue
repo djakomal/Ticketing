@@ -535,8 +535,8 @@ export default {
  },
  methods:{
 
-    getbyid(id){
-            axios.get(`http://localhost:8081/tickets/tickets/get/${id}`).
+    getbyid(){
+            axios.get(`http://localhost:8081/mail/CRUD/get/${this.$route.params.id}`).
             then(res=>res.json())
             .then(data=>{
                 this.eventdetails=data

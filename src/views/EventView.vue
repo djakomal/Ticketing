@@ -178,23 +178,14 @@ export default {
   },
   methods:{
 
-    getMails() {
+getMails() {
         axios.get('http://localhost:8081/tickets/tickets')
             // .then(res => res.json())
             .then(res => {
                 this.eventdetails= res.data
                 console.log(this.eventdetails)
             })
-    },
-    // getbyid(id){
-    //         axios.get(`http://localhost:8081/mail/CRUD/get/${id}`).
-    //         then(res=>res.json())
-    //         .then(data=>{
-    //             this.eventdetails=data
-    //             console.log(this.eventdetails)
-    //         })
-    //     }
-
+    }
  
 },
 beforeMount() {
