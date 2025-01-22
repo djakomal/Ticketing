@@ -24,8 +24,8 @@
                     <div class="position-relative">
                         <img src="https://www.bootdey.com/image/450x280/87CEFA/000000" alt="">
                         <div class="events-date">
-                            <div class="font-size28">25</div>
-                            <div class="font-size14">Feb</div>
+                            <div class="font-size28">{{ events.jour }}</div>
+                            <div class="font-size14">{{ events.mois }}</div>
                         </div>
                     </div>
                 </div>
@@ -46,8 +46,8 @@
                     <div class="position-relative">
                         <img src="https://www.bootdey.com/image/450x280/FF0000/000000" alt="">
                         <div class="events-date">
-                            <div class="font-size28">10</div>
-                            <div class="font-size14">Oct</div>
+                            <div class="font-size28">{{ events.jour }}</div>
+                            <div class="font-size14">{{ events.mois  }}</div>
                         </div>
                     </div>
                 </div>
