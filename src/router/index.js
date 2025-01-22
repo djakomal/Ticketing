@@ -23,6 +23,26 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/DashbordView.vue')
   },
 
+
+  {
+    path: '/adm/add',
+    name: 'AddView',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Admin/AddEvent.vue')
+  },
+
+
+  {
+    path: '/adm/view',
+    name: 'ViewEvent',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Admin/ViewEvent.vue')
+  },
+
   {
     path: '/event',
     name: 'EventView',

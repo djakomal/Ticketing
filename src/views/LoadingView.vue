@@ -137,11 +137,11 @@ export default {
 
       setTimeout(() => {
       this.$router.push({ name: 'home' }); // Redirige vers "home"
-    }, 15001); // 5000 ms = 5 secondes
+    }, 13001); // 5000 ms = 5 secondes
       
       setTimeout(() => {
         this.isLoading = false;
-      }, 15000);
+      }, 13000);
     
     },
     },
