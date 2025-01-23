@@ -1,138 +1,216 @@
 <template>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <main>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-        <div class="container">
-            <div class="row flex-lg-nowrap">
-                <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create User</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="py-1">
-                            <form class="form" >
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Full Name</label>
-                                                    <input class="form-control" type="text" name="name"
-                                                        placeholder="John Smith" value="John Smith">
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Username</label>
-                                                    <input class="form-control" type="text" name="username"
-                                                        placeholder="johnny.s" value="johnny.s">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="text"
-                                                        placeholder="user@example.com">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col mb-3">
-                                                <div class="form-group">
-                                                    <label>About</label>
-                                                    <textarea class="form-control" rows="5"
-                                                        placeholder="My Bio"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-sm-6 mb-3">
-                                        <div class="mb-2"><b>Change Password</b></div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Current Password</label>
-                                                    <input class="form-control" type="password" placeholder="••••••">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>New Password</label>
-                                                    <input class="form-control" type="password" placeholder="••••••">
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Confirm <span
-                                                            class="d-none d-xl-inline">Password</span></label>
-                                                    <input class="form-control" type="password" placeholder="••••••">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                                        <div class="mb-2"><b>Keeping in Touch</b></div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <label>Email Notifications</label>
-                                                <div class="custom-controls-stacked px-2">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="notifications-blog" >
-                                                        <label class="custom-control-label"
-                                                            for="notifications-blog">Blog posts</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="notifications-news" >
-                                                        <label class="custom-control-label"
-                                                            for="notifications-news">Newsletter</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="notifications-offers">
-                                                        <label class="custom-control-label"
-                                                            for="notifications-offers">Personal
-                                                            Offers</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col d-flex justify-content-end">
-                                        <button class="btn btn-primary" type="submit">Save Changes</button>
-                                    </div>
-                                </div>
-                            </form>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <main>
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <form @submit.prevent="Addmail">
+                    <div class="d-flex justify-content-between align-items-lg-center py-3 flex-column flex-lg-row">
+                        <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i
+                                    class="bi bi-arrow-left-square me-2"></i></a> Create new customer</h2>
+                        <div class="hstack gap-3">
+                            <button class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span
+                                    class="text">Cancel</span></button>
+                            <button class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span
+                                    class="text">Save</span></button>
                         </div>
                     </div>
-                </div>
+
+                    <!-- Main content -->
+                    <div class="row">
+                        <!-- Left side -->
+                        <div class="col-lg-8">
+
+
+                            <!-- Basic information -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3 class="h6 mb-4">Event information</h3>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" class="form-control" v-model="events.name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">description</label>
+                                                <textarea type="text" class="form-control"
+                                                    v-model="events.description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Artiste</label>
+                                                <input type="text" class="form-control" v-model="events.artiste">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Budget</label>
+                                                <input type="number" class="form-control" v-model="events.budget">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Categories</label>
+                                                <input type="number" class="form-control" v-model="events.categorie">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Address -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Invited</label>
+                                        <input type="text" class="form-control" v-model="events.invited">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Jour</label>
+                                                <input type="text" class="form-control" v-model="events.jour">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Lieu</label>
+                                                <input type="text" class="form-control" v-model="events.lieu">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mois</label>
+                                                <input type="month" class="form-control" v-model="events.mois">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">photo</label>
+                                                <input type="file" class="form-control" @change="handleFileUpload"
+                                                    accept="image/*">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Right side -->
+                        </div>
+                    </div>
+                </form>
+                <!-- Title -->
             </div>
-                </div>
-            </div>
+
         </div>
     </main>
 </template>
 
 <style lang="css">
-   body{
-   margin-top:20px;
-   background:#f8f8f8}
+body {
+    background: #eee;
+}
+
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: 1rem;
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.5rem 1.5rem;
+}
 </style>
 <script lang="js">
+import axios from 'axios';
+export default {
+    name: 'AdEvent',
+    components: {
 
+    },
+    data() {
+        return {
+            events: {
+                name: '',
+                description: '',
+                artiste: '',
+                budget: '',
+                invited: '',
+                lieu: '',
+                jour: '',
+                mois: '',
+                photo: '',
+                categorie: ''
+
+            },
+            file: null,
+            uploadedImage: null, // URL de l'image uploadée
+        }
+    },
+    methods: {
+        Addmail() {
+            axios.post('http://localhost:8081/tickets/tickets/add', this.events
+                // {
+                //     // method:'POST',
+                //     // headers:{
+                //     //     'Content-Type':'application/json'
+                //     // },
+                //     // body:JSON.stringify(this.mail)
+
+                // }
+            )
+                .then(res => {
+                    console.log(res)
+                    alert("enregistrement avec succes:", res)
+                    this.$router.push("ViewEvent")
+                })
+
+        }
+    },
+    handleFileUpload() {
+        this.file = this.event.target.files[0];
+    },
+    async uploadedImage() {
+        if (!this.file) {
+            alert('veillez selectionner votre image');
+            return;
+        }
+        const formData = new formData();
+        formData.append('file', this.file)
+        try {
+            const response = await axios.post("http://localhost:8080/tickets/tickets/upload", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+            this.uploadedImage = response.data; // Chemin de l'image redimensionnée
+        } catch (error) {
+            console.error("Erreur lors de l'upload :", error);
+        }
+    }
+
+
+}
 </script>
