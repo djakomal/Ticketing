@@ -57,8 +57,10 @@
                                                         <th class="max-width">Budget</th>
                                                         <th class="max-width">Invited</th>
                                                         <th class="sortable">Lieu</th>
+                                                        <th class="sortable">Jour-Mois</th>
+                                                        <th class="sortable">Date</th>
 
-                                                        <th> </th>
+                                                  
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
@@ -74,6 +76,7 @@
                                                                    
                                                                
                                                             </div>
+                                                          
                                                         </td>
 
                                                         <td class="text-nowrap align-middle">{{ events.name }}</td>
@@ -89,6 +92,7 @@
                                                         <td class="text-nowrap align-middle"><span>{{ events.jour }} -
                                                                 {{ events.mois }}</span>
                                                         </td>
+                                                        <td class="text-nowrap align-middle">{{ events.date }}</td>
 
                                                         <td class="text-center align-middle">
                                                             <div class="btn-group align-top">

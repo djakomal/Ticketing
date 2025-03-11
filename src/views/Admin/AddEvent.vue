@@ -76,6 +76,13 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3">
+                                                <label class="form-label">Date</label>
+                                                <input type="date" class="form-control" v-model="events.date">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
                                                 <label class="form-label">Jour</label>
                                                 <input type="text" class="form-control" v-model="events.jour">
                                             </div>
@@ -164,7 +171,8 @@ export default {
                 jour: '',
                 mois: '',
                 photo: '',
-                categorie: ''
+                categorie: '',
+                date:''
 
             },
             file: null,
@@ -191,25 +199,7 @@ export default {
 
         }
     },
-    handleFileUpload() {
-        this.file = this.event.target.files[0];
-    },
-    async uploadedImage() {
-        if (!this.file) {
-            alert('veillez selectionner votre image');
-            return;
-        }
-        const formData = new formData();
-        formData.append('file', this.file)
-        try {
-            const response = await axios.post("http://localhost:8080/tickets/tickets/upload", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
-            this.uploadedImage = response.data; // Chemin de l'image redimensionnée
-        } catch (error) {
-            console.error("Erreur lors de l'upload :", error);
-        }
-    }
+   
 
 
 }
